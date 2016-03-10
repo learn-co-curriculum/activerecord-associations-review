@@ -4,6 +4,8 @@ ActiveRecord associations are an iconic Rails feature. They allow developers to
 work with complex networks of related models without having to write a single
 line of SQL--as long as all of the names line up!
 
+Hello
+ 
 ## Objectives
 
 After this lesson, you will be able to...
