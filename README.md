@@ -73,7 +73,7 @@ class Post < ActiveRecord::Base
   belongs_to :author
 end
 ```
-
+You should give an example below when you say "now have access to some new instance methods, like `author`." It wasn't apparent to me the first time I read this that I could use the instance of author for example inside a method of the Post class without first calling post.author. 
 We now have access to some new instance methods, like `author`. This will return the actual `Author` object that is attached to that `@post`.
 
 ```ruby
@@ -263,3 +263,5 @@ You can see the entire [list of class methods][api_associations_class_methods] i
 [api_inflector]: http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/activerecord-associations-review'>Active Record Associations Review</a> on Learn.co and start learning to code for free.</p>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/activerecord-associations-review'>Activerecord Associations Review</a> on Learn.co and start learning to code for free.</p>
