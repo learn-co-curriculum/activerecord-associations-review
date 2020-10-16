@@ -261,5 +261,3 @@ You can see the entire [list of class methods][api_associations_class_methods] i
 [guides_has_many_through]: http://guides.rubyonrails.org/association_basics.html#the-has-many-through-association
 [api_associations_class_methods]: http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html
 [api_inflector]: http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html
-
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/activerecord-associations-review'>Active Record Associations Review</a> on Learn.co and start learning to code for free.</p>
