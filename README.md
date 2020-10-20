@@ -99,13 +99,29 @@ Now we can look up an author's posts just as easily:
 
 Remember, Active Record uses its [Inflector][api_inflector] to switch between the singular and plural forms of your models.
 
-Name | Data
----- | -----
-Model | `Author`
-Table | `authors`
-Foreign Key | `author_id`
-`belongs_to` | `:author`
-`has_many` | `:authors`
+<table border="1" cellpadding="4" cellspacing="0">
+  <tr>
+    <th>Name</th>
+    <th>Data</th>
+  </tr>
+  
+  <tr>
+    <td>Model</td>
+    <td>`Author`</td>
+  </tr>
+  <tr>
+    <td>Foreign Key</td>
+    <td>`author_id`</td>
+  </tr>
+  <tr>
+    <td>`belongs_to`</td>
+    <td>`:author`</td>
+  </tr>
+  <tr>
+    <td>`has_many`</td>
+    <td>`:authors`</td>
+  </tr>
+</table>
 
 Like many other Active Record class methods, the symbol you pass determines the name of the instance method that will be defined. So `belongs_to :author` will give you `@post.author`, and `has_many :posts` will give you `@author.posts`.
 
@@ -188,11 +204,25 @@ Because there is no "owner" model in this relationship, there's also no right pl
 
 Enter the join table:
 
-`tag_id` | `post_id`
--------- | ---------
-1        | 1
-2        | 1
-1        | 5
+<table border="1" cellpadding="4" cellspacing="0">
+  <tr>
+    <th>`tag_id`</th>
+    <th>`post_id`</th>
+  </tr>
+  
+  <tr>
+    <td>1</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>5</td>
+  </tr>
+</table>
 
 This join table depicts two tags (1 and 2) and two posts (1 and 5). Post 1 has both tags, while Post 5 has only one.
 
