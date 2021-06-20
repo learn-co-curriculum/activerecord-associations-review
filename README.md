@@ -16,7 +16,7 @@ After this lesson, you will be able to...
 8. Use a `has_many :through` with a join model.
 9. Manipulate associated data from a `has_many :through`, including creating the association from the join model directly `PostTag.new(:post => post, :tag => tag)`.
 
-# Foreign Keys
+## Foreign Keys
 
 It all starts in the database. **Foreign keys** are columns that refer to the primary key of another table. Conventionally, foreign keys in Active Record are comprised of the name of the model you're referencing, and `_id`. So for example if the foreign key was for a `posts` table it would be `post_id`.
 
@@ -58,13 +58,13 @@ SELECT * FROM posts WHERE author_id = #{@author.id}
 
 This is all great, but Rails is always looking for ways to save us keystrokes.
 
-# Many-to-One Relationships
+## Many-to-One Relationships
 
 By using Active Record's macro-style association class methods, we can add some convenient instance methods to our models.
 
 The most common relationship is **many-to-one**, and it is declared in Active Record with `belongs_to` and `has_many`.
 
-## `belongs_to`
+### `belongs_to`
 
 Each `Post` is associated with **one** `Author`.
 
@@ -81,7 +81,7 @@ We now have access to some new instance methods, like `author`. This will return
 @post.author #=> #<Author id=5>
 ```
 
-## `has_many`
+### `has_many`
 
 In the opposite direction, each `Author` might be associated with zero, one, or many `Post` objects. We haven't changed the schema of the `authors` table at all; Active Record is just going to use `posts.author_id` to do all of the lookups.
 
@@ -125,9 +125,9 @@ Remember, Active Record uses its [Inflector][api_inflector] to switch between th
 
 Like many other Active Record class methods, the symbol you pass determines the name of the instance method that will be defined. So `belongs_to :author` will give you `@post.author`, and `has_many :posts` will give you `@author.posts`.
 
-# Convenience Builders
+## Convenience Builders
 
-## Building a new item in a collection
+### Building a new item in a collection
 
 If you want to add a new post for an author, you might start this way:
 
@@ -145,7 +145,7 @@ new_post.save
 
 This will return a new `Post` object with the `author_id` already set for you! We use this one as much as possible because it's just easier. `build` works just like `new`. So the instance that is returned isn't quite saved to the database just yet. You'll need to `#save` the instance when you want it to be persisted to the database.
 
-## Setting a singular association
+### Setting a singular association
 
 The setup process is a little bit less intuitive for singular associations. Remember, a post `belongs_to` an author. The verbose way of creating this association would be like so:
 
@@ -162,7 +162,7 @@ Remember, if you used the `build_` option, you'll need to persist your new `auth
 
 These methods are also documented in the [Rails Associations Guide][guides_associations].
 
-## Collection Convenience
+### Collection Convenience
 
 If you add an existing object to a collection association, Active Record will conveniently take care of setting the foreign key for you:
 
@@ -178,7 +178,7 @@ If you add an existing object to a collection association, Active Record will co
 #=> #<Author @name="Leeroy Jenkins">
 ```
 
-# One-to-One Relationships
+## One-to-One Relationships
 
 Profiles can get pretty complex, so in large applications it can be a good idea to give them their own model. In this case:
 
@@ -191,7 +191,7 @@ Profiles can get pretty complex, so in large applications it can be a good idea 
 If you're not sure which model should be declared with which macro, it's usually a safe bet to put `belongs_to` on whichever model has the foreign key column in its database table.
 
 
-# Many-to-Many Relationships and Join Tables
+## Many-to-Many Relationships and Join Tables
 
 Each author has many posts, each post has one author.
 
@@ -232,7 +232,7 @@ create_join_table :posts, :tags
 
 This will create a table called `posts_tags`.
 
-# `has_many :through`
+## `has_many :through`
 
 To work with the join table, both our `Post` and `Tag` models will have a `has_many` association with the `posts_tags` table. We also still need to associate `Post` and `Tag` themselves. Ideally, we'd like to be able to call a `@my_post.tags` method, right? That's where `has_many :through` comes in.
 
@@ -274,7 +274,7 @@ end
 
 Great, we've unlocked our `@post.tags` and `@tag.posts` methods!
 
-# Summary
+## Summary
 
 For every relationship, there is a foreign key somewhere. Foreign keys correspond to the `belongs_to` macro on the model.
 
